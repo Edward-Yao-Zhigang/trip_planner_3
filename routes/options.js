@@ -20,23 +20,26 @@ var Activity = require('../models').Activity;
 //         .catch(next);
 // });
 
-router.get('/api/hotels', function(res, req, next) {
+router.get('/api/hotels', function(req,res,next) {
     Hotel.findAll({})
         .then(hotels => {
             res.json(hotels);
         })
+        .catch(next);
 });
-router.get('/api/restaurants', function(res, req, next) {
+router.get('/api/restaurants', function(req,res, next) {
     Restaurant.findAll({})
         .then(restaurants => {
             res.json(restaurants);
         })
+        .catch(next);
 });
-router.get('/api/activities', function(res, req, next) {
+router.get('/api/activities', function(req,res, next) {
     Activity.findAll({})
         .then(activities => {
             res.json(activities);
         })
+        .catch(next);
 });
 
 
