@@ -8,9 +8,9 @@ var Activity = require('./activity');
 var Day = db.define('day', {
     number: Sequelize.INTEGER
 }, {
-    defaultScope: {
-        include: [Hotel]
-    },
+    // defaultScope: {
+    //     include: [Hotel]
+    // },
     getterMethods: {
         type: function() {
             return 'day';

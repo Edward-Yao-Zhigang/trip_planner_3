@@ -62,13 +62,19 @@ var dayModule = (function() {
         var self = this;
         this.$button.on('click', function() {
             this.blur(); // removes focus box from buttons
-            tripModule.switchTo(self);
+            console.log("Clicking");
             $.ajax({
                     method: 'POST',
                     url: '/api/days'
                 })
-                .then(function(data) { console.log('POST response data: ', data) })
-                .catch(console.error.bind(console));
+                .then(function(data) {
+                    tripModule.switchTo(self);
+                    console.log('POST response data: ', data)
+                })
+                .catch(function(err) {
+                    console.error("hey, there is an error");
+                    console.log(err);
+                });
             // should log "POST response data: You created a day!!"
 
         });

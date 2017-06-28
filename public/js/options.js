@@ -8,17 +8,7 @@
  * that attraction's id. Selecting an option looks up the attraction by id,
  * then tells the trip module to add the attraction.
  */
-
-$(function() {
-
-    // jQuery selects
-    var $optionsPanel = $('#options-panel');
-    var $hotelSelect = $optionsPanel.find('#hotel-choices');
-    var $restaurantSelect = $optionsPanel.find('#restaurant-choices');
-    var $activitySelect = $optionsPanel.find('#activity-choices');
-
-
-
+var hotelOption = (function() {
     $.ajax({
             method: 'GET',
             url: '/api/hotels'
@@ -32,9 +22,10 @@ $(function() {
             })
 
         })
-        .catch(console.error)
+        .catch(console.error);
+});
 
-
+var restaurantOption = (function() {
     $.ajax({
             method: 'GET',
             url: '/api/restaurants'
@@ -49,7 +40,9 @@ $(function() {
 
         })
         .catch(console.error)
+});
 
+var activityOption = (function() {
     $.ajax({
             method: 'GET',
             url: '/api/activities'
@@ -64,8 +57,20 @@ $(function() {
 
         })
         .catch(console.error)
+});
 
 
+$(function() {
+
+    // jQuery selects
+    var $optionsPanel = $('#options-panel');
+    var $hotelSelect = $optionsPanel.find('#hotel-choices');
+    var $restaurantSelect = $optionsPanel.find('#restaurant-choices');
+    var $activitySelect = $optionsPanel.find('#activity-choices');
+
+    hotelOption();
+    restaurantOption();
+    activityOption();
 
 
     // what to do when the `+` button next to a `select` is clicked

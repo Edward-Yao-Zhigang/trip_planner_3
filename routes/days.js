@@ -44,7 +44,7 @@ router.get('/api/days/:id', function(req, res, next) {
 // });
 
 
-router.post('/api/days/:id', function(req, res, next) {
+router.post('/api/days/', function(req, res, next) {
     Day.create(req.body)
         .then(createDay => {
             res.json({
